@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .error {
-    color: red;
+    color: coral;
 }
 .flip-list-move {
     transition: transform .5s;
