@@ -1,3 +1,6 @@
+---
+layout: default
+---
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -8,103 +11,6 @@
 </head>
 
 <body>
-    <div id="app-01">
-        {{ message }}
-        <!-- Vue.jsの任意の項目messageに指定した値が{{ message }}として表示される -->
-    </div>
-    <div id="app-02" v-if="error">
-        <!-- v-ifの中身がtrueならタグの中身が表示されるみたいな感じ？ -->
-        エラーです
-    </div>
-    <div id="app-03">
-        <p v-bind:class="error_class">
-            <!-- v-bindで要素指定する。vue.jsのerror_classという任意の項目がとる値をclass名にする -->
-            エラーですよー
-        </p>
-        <img v-bind:src="image_src" v-bind:class="error_class">
-    </div>
-    <div id="app-04">
-        <p>
-            {{ now }}
-        </p>
-        <button v-on:click="time">
-            <!-- v-onで、イベントの起動条件と実行内容メソッド名を指定する。clickなら、その要素をクリックするのが起動条件 -->
-            現在時刻を表示する
-        </button>
-    </div>
-    <div id="app-05">
-       <button v-on:click="shuffle">シャッフル</button>
-        <transition-group name="flip-list" tag="ul">
-            <li v-for="pref in prefs" v-bind:key="pref.name">
-                {{ pref.name }}
-            </li>
-        </transition-group>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-    <script>
-        var app01 = new Vue({
-            el: "#app-01",
-            data: {
-                message: "こんにちは"
-            }
-        });
-        var app02 = new Vue({
-            el: "#app-02",
-            data: {
-                error: true,
-                error: false,
-                error: 1 - 1 == 0
-                //v-ifで指定したerrorがtrueになるかfalseになるかの記述をしている。
-                //1-1 == 0はtrueになるので、この場合#app-02は表示される
-            }
-        });
-        var app03 = new Vue({
-            el: "#app-03",
-            data: {
-                error_class: "error",
-                //上のv-bindで言ってたerror_classの値をここで指定。errorにすると、class名もerrorになる。
-                image_src: "http://abcimagesrc.jpg",
-                image_class: "imgclass"
-            }
-        });
-        var app04 = new Vue({
-            el: "#app-04",
-            data: {
-                now: "00:00:00"
-            },
-            methods: {
-                //v-onで指定したメソッド名について、どんな処理をするか書く。
-                //メソッド名: 内容。this.nowと下で書いてるが、this.変数名 = 〇〇と書くとその変数名の値を指定するという処理を指示できる。
-                time: function(e) {
-                    //このマスタッシュはfunctionについて書いてるので、それぞれの処理の終わりは;をつけること。
-                    var date = new Date();
-                    this.now = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-                }
-            }
-        });
-        var app05 = new Vue({
-            el: "#app-05",
-            data: {
-                prefs: [
-                    {name: "北海道"},
-                    //{}の一つ一つがprefとなり、そのnameを出力
-                    {name: "青森県"},
-                    {name: "岩手県"},
-                    {name: "宮城県"},
-                    {name: "秋田県"},
-                    {name: "山形県"},
-                ]
-            },
-            methods: {
-                shuffle: function() {
-                    this.prefs = _.shuffle(this.prefs)
-                }
-            }
-        });
-
-    </script>
 </body>
 
 </html>
