@@ -44,7 +44,6 @@ for(var i = 0; i < line35.length; i++) {
         var aftery = txtY[i] - (txtH[i] - line35[i].height) / 2;
         line35[i].position = [afterx, aftery];
         
-        //でけたー！！これで、必要に応じて横幅、縦幅を狭めてってできるぞ！
     }
 }
 
